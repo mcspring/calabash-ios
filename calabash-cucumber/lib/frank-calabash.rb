@@ -19,6 +19,11 @@ module Calabash
           screenshot_and_raise "map #{query}, #{method_name} failed because: #{res['reason']}\n#{res['details']}"
         end
 
+        # TODO: detect orientation from project settings?
+        if res['status_bar_orientation'].nil?
+          res['status_bar_orientation'] = :up
+        end
+
         res
       end
 
